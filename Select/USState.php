@@ -45,94 +45,105 @@
 
 class HTML_Select_USState
 {
-	/**
+    /**
     * Constructor
-	*
-	* @access public
+    *
+    * @access public
     */
-	function HTML_Select_USState()
-	{
-		$this->_states[] = 'Alabama';
-		$this->_states[] = 'Alaska';
-		$this->_states[] = 'Arizona';
-		$this->_states[] = 'Arkansas';
-		$this->_states[] = 'California';
-		$this->_states[] = 'Colorado';
-		$this->_states[] = 'Connecticut';
-		$this->_states[] = 'Delaware';
-		$this->_states[] = 'District of Columbia';
-		$this->_states[] = 'Florida';
-		$this->_states[] = 'Georgia';
-		$this->_states[] = 'Hawaii';
-		$this->_states[] = 'Idaho';
-		$this->_states[] = 'Illinois';
-		$this->_states[] = 'Indiana';
-		$this->_states[] = 'Iowa';
-		$this->_states[] = 'Kansas';
-		$this->_states[] = 'Kentucky';
-		$this->_states[] = 'Louisiana';
-		$this->_states[] = 'Maine';
-		$this->_states[] = 'Maryland';
-		$this->_states[] = 'Massachusetts';
-		$this->_states[] = 'Michigan';
-		$this->_states[] = 'Minnesota';
-		$this->_states[] = 'Mississippi';
-		$this->_states[] = 'Missouri';
-		$this->_states[] = 'Montana';
-		$this->_states[] = 'Nebraska';
-		$this->_states[] = 'Nevada';
-		$this->_states[] = 'New England';
-		$this->_states[] = 'New Hampshire';
-		$this->_states[] = 'New Jersey';
-		$this->_states[] = 'New Mexico';
-		$this->_states[] = 'New York';
-		$this->_states[] = 'North Carolina';
-		$this->_states[] = 'North Dakota';
-		$this->_states[] = 'Ohio';
-		$this->_states[] = 'Oklahoma';
-		$this->_states[] = 'Oregon';
-		$this->_states[] = 'Pennsylvania';
-		$this->_states[] = 'Rhode Island';
-		$this->_states[] = 'South Carolina';
-		$this->_states[] = 'South Dakota';
-		$this->_states[] = 'Tennessee';
-		$this->_states[] = 'Texas';
-		$this->_states[] = 'Utah';
-		$this->_states[] = 'Vermont';
-		$this->_states[] = 'Virginia';
-		$this->_states[] = 'Washington';
-		$this->_states[] = 'West Virginia';
-		$this->_states[] = 'Wisconsin';
-		$this->_states[] = 'Wyoming';
-	}
+    function HTML_Select_USState()
+    {
+        $this->_states['ak'] = 'Alabama';
+        $this->_states['al'] = 'Alaska';
+        $this->_states['ar'] = 'Arizona';
+        $this->_states['az'] = 'Arkansas';
+        $this->_states['ca'] = 'California';
+        $this->_states['co'] = 'Colorado';
+        $this->_states['ct'] = 'Connecticut';
+        $this->_states['de'] = 'Delaware';
+        $this->_states['dc'] = 'District of Columbia';
+        $this->_states['fl'] = 'Florida';
+        $this->_states['ga'] = 'Georgia';
+        $this->_states['hi'] = 'Hawaii';
+        $this->_states['id'] = 'Idaho';
+        $this->_states['il'] = 'Illinois';
+        $this->_states['in'] = 'Indiana';
+        $this->_states['ia'] = 'Iowa';
+        $this->_states['ks'] = 'Kansas';
+        $this->_states['ky'] = 'Kentucky';
+        $this->_states['la'] = 'Louisiana';
+        $this->_states['ma'] = 'Maine';
+        $this->_states['md'] = 'Maryland';
+        $this->_states['ma'] = 'Massachusetts';
+        $this->_states['mi'] = 'Michigan';
+        $this->_states['mn'] = 'Minnesota';
+        $this->_states['ms'] = 'Mississippi';
+        $this->_states['mo'] = 'Missouri';
+        $this->_states['mt'] = 'Montana';
+        $this->_states['ne'] = 'Nebraska';
+        $this->_states['nv'] = 'Nevada';
+        $this->_states['ne'] = 'New England';
+        $this->_states['nh'] = 'New Hampshire';
+        $this->_states['nj'] = 'New Jersey';
+        $this->_states['nm'] = 'New Mexico';
+        $this->_states['ny'] = 'New York';
+        $this->_states['nc'] = 'North Carolina';
+        $this->_states['nd'] = 'North Dakota';
+        $this->_states['oh'] = 'Ohio';
+        $this->_states['ok'] = 'Oklahoma';
+        $this->_states['or'] = 'Oregon';
+        $this->_states['pa'] = 'Pennsylvania';
+        $this->_states['ri'] = 'Rhode Island';
+        $this->_states['sc'] = 'South Carolina';
+        $this->_states['sd'] = 'South Dakota';
+        $this->_states['tn'] = 'Tennessee';
+        $this->_states['tx'] = 'Texas';
+        $this->_states['ut'] = 'Utah';
+        $this->_states['vt'] = 'Vermont';
+        $this->_states['va'] = 'Virginia';
+        $this->_states['wa'] = 'Washington';
+        $this->_states['wv'] = 'West Virginia';
+        $this->_states['wi'] = 'Wisconsin';
+        $this->_states['wy'] = 'Wyoming';
+    }
 
-	/**
+    /**
     * Produces the HTML for the dropdown
-	*
-	* @param  string $name            The name="" attribute
-	* @param  string $selectedOption  The option to be selected by default.
-	*                                 Must match the state name exactly,
-	*                                 (though it can be a different case).
-	* @param  string $promoText       The text to appear as the first option
-	* @param  string $extraAttributes Any extra attributes for the <select> tag
-	* @return string                  The HTML for the <select>
-	* @access public
+    *
+    * @param  string $name            The name="" attribute
+    * @param  string $selectedOption  The option to be selected by default.
+    *                                 Must match the state name exactly,
+    *                                 (though it can be a different case).
+    * @param  string $promoText       The text to appear as the first option
+    * @param  string $extraAttributes Any extra attributes for the <select> tag
+    * @return string                  The HTML for the <select>
+    * @access public
     */
     function toHTML($name, $selectedOption = null, $promoText = 'Select a state...', $extraAttributes = '')
     {
         $options[]      = sprintf('<option value="">%s</option>', $promoText);
-		$selectedOption = strtolower($selectedOption);
+        $selectedOption = strtolower($selectedOption);
 
         foreach ($this->_states as $state) {
-			$state_lc  = strtolower($state);
+            $state_lc  = strtolower($state);
             $selected  = $selectedOption == $state_lc ? ' selected="selected"' : '';
             $options[] = '<option value="' . $state_lc . '"' . $selected . '>' . ucfirst($state) . '</option>';
         }
         
         return sprintf('<select name="%s" %s>%s</select>',
-		               $name,
-					   $extraAttributes,
-					   implode("\r\n", $options));
+                       $name,
+                       $extraAttributes,
+                       implode("\r\n", $options));
+    }
+
+    /**
+    * Returns an array with all states, indexed by shortcut
+    *
+    * @return array                   The array containing all state data
+    * @access public
+    */
+    function getList()
+    {
+        return $this->_states;
     }
 }
 
