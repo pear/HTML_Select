@@ -29,15 +29,17 @@ o US States
 Initial release
 		</notes>
 		<filelist>
-			<dir name="/" baseinstalldir="I18N/Select">
-				<file role="php" name="Country.php" />
-				<file role="php" name="UKCounties.php" />
-				<file role="php" name="USStates.php" />
-
-				<dir name="examples">
+			<dir name="/" baseinstalldir="I18N">
+				<dir name="Select">
 					<file role="php" name="Country.php" />
-					<file role="php" name="UKCounties.php" />
-					<file role="php" name="USStates.php" />
+					<file role="php" name="UKCounty.php" />
+					<file role="php" name="USState.php" />
+	
+					<dir name="examples">
+						<file role="php" name="Country.php" />
+						<file role="php" name="UKCounty.php" />
+						<file role="php" name="USState.php" />
+					</dir>
 				</dir>
 			</dir>
 		</filelist>
