@@ -1,11 +1,11 @@
 <?php
-	include('HTML/Select/Country.php');
+    include('HTML/Select/Country.php');
 
-	$c = new HTML_Select_Country();
+    $c = new HTML_Select_Country();
 ?>
 
 <html>
 <body>
-	<?=$c->toHTML('country', 'gb')?>
+    <?=$c->toHTML('country', 'gb')?>
 </body>
 </html>

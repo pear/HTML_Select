@@ -1,11 +1,11 @@
 <?php
-	include('HTML/Select/UKCounty.php');
+    include('HTML/Select/UKCounty.php');
 
-	$c = new HTML_Select_UKCounty();
+    $c = new HTML_Select_UKCounty();
 ?>
 
 <html>
 <body>
-	<?=$c->toHTML('county')?>
+    <?=$c->toHTML('county')?>
 </body>
 </html>
