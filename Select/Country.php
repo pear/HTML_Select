@@ -53,8 +53,8 @@ class HTML_Select_Country extends I18N_Country
     * @param  string $name            The name="" attribute
     * @param  string $selectedOption  The option to be selected by default.
     *                                 Must match the country code.
-	* @param  string $promoText       The text to appear as the first option
-	* @param  string $extraAttributes Any extra attributes for the <select> tag
+    * @param  string $promoText       The text to appear as the first option
+    * @param  string $extraAttributes Any extra attributes for the <select> tag
     * @return string                  The HTML for the <select>
     * @access public
     */
