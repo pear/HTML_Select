@@ -22,11 +22,11 @@ HTML_Select provides an OOP way of generating HTML form select elements.
     </maintainer>
   </maintainers>
   <release>
-    <version>1.2</version>
-    <date>2003-07-03</date>
+    <version>1.2.1</version>
+    <date>2004-02-26</date>
     <state>beta</state>
     <notes>
-First independent pear release.
+Fix get_class compatability issue.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="HTML">
@@ -37,4 +37,14 @@ First independent pear release.
       <dep type="pkg" rel="ge" version="1.1">HTML_Common</dep>
     </deps>
   </release>
+  <changelog>
+    <release>
+      <version>1.2</version>
+      <date>2003-07-03</date>
+      <state>beta</state>
+      <notes>
+First independent pear release.
+      </notes>
+    </release>
+  </changelog>
 </package>

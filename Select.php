@@ -211,7 +211,7 @@ class HTML_Select extends HTML_Common
     {
         include_once 'DB.php';
         
-        if (!is_object($result) || (get_class($result) != "db_result" && 
+        if (!is_object($result) || (strtolower(get_class($result)) != "db_result" && 
             is_subclass_of($result, "db_result"))) {
             return new PEAR_ERROR("First argument to HTML_Select::loadDbResult is not a valid DB_result");
         }
@@ -284,7 +284,7 @@ class HTML_Select extends HTML_Common
             case is_array($options):
                 return $this->loadArray($options, $param1);
                 break;
-            case (get_class($options) == "db_result" || is_subclass_of($options, "db_result")):
+            case (strtolower(get_class($options)) == "db_result" || is_subclass_of($options, "db_result")):
                 return $this->loadDbResult($options, $param1, $param2, $param3);
                 break;
             case (is_string($options) || is_subclass_of($options, "db_common")):
