@@ -82,7 +82,6 @@ class HTML_Select extends HTML_Common
      * @since     1.0
      * @access    public
      * @return    double
-     * @throws    
      */
     function apiVersion()
     {
@@ -91,28 +90,29 @@ class HTML_Select extends HTML_Common
 
     /**
      * Sets the default values of the select box
-     * 
+     *
      * @param     mixed    $values  Array or comma delimited string of selected values
      * @since     1.0
      * @access    public
      * @return    void
-     * @throws    
      */
     function setSelectedValues($values)
     {
         if (is_string($values)) {
             $values = split("[ ]?,[ ]?", $values);
         }
-        $this->_values = $values;  
+        if (!is_array($values)) {
+            $values = array($values);
+        }
+        $this->_values = $values;
     }
-    
+
     /**
      * Returns an array of the selected values
-     * 
+     *
      * @since     1.0
      * @access    public
      * @return    array of selected values
-     * @throws    
      */
     function getSelectedValues()
     {
