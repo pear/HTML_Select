@@ -68,7 +68,14 @@ class HTML_Select extends HTML_Common
     function HTML_Select($name = '', $size = 1, $multiple = false, $attributes = null, $tabOffset = 0)
     {
         HTML_Common::HTML_Common($attributes, $tabOffset);
-        $attr = array('name' => $name, 'size' => $size);
+        $attr = array(
+            'name' => $name,
+            'size' => $size
+        );
+
+        if ($this->getAttribute('id') === null) {
+            $attr['id'] = $name;
+        }
         if ($multiple) {
             $attr['multiple'] = 'multiple';
         }
