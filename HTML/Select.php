@@ -1,22 +1,17 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
-// +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
-// +----------------------------------------------------------------------+
-// | Copyright (c) 1997, 1998, 1999, 2000, 2001 The PHP Group             |
-// +----------------------------------------------------------------------+
-// | This source file is subject to version 2.0 of the PHP license,       |
-// | that is bundled with this package in the file LICENSE, and is        |
-// | available at through the world-wide-web at                           |
-// | http://www.php.net/license/2_02.txt.                                 |
-// | If you did not receive a copy of the PHP license and are unable to   |
-// | obtain it through the world-wide-web, please send a note to          |
-// | license@php.net so we can mail you a copy immediately.               |
-// +----------------------------------------------------------------------+
-// | Author: Adam Daniel <adaniel1@eesus.jnj.com>                         |
-// +----------------------------------------------------------------------+
-//
-// $Id$
+/**
+ * HTML <select> element class
+ *
+ * PHP version 4
+ *
+ * @category HTML
+ * @package  HTML_Select
+ * @author   Adam Daniel <adaniel1@eesus.jnj.com>
+ * @license  PHP License http://php.net/license
+ * @version  SVN: $Id$
+ * @link     http://pear.php.net/package/HTML_Select
+ */
 
 require_once 'PEAR.php';
 require_once 'HTML/Common.php';
@@ -24,10 +19,11 @@ require_once 'HTML/Common.php';
 /**
  * Class to dynamically create an HTML SELECT
  *
- * @author       Adam Daniel <adaniel1@eesus.jnj.com>
- * @version      1.2
- * @since        PHP4.04pl1
- * @access       public
+ * @category HTML
+ * @package  HTML_Select
+ * @author   Adam Daniel <adaniel1@eesus.jnj.com>
+ * @license  PHP License http://php.net/license
+ * @link     http://pear.php.net/package/HTML_Select
  */
 class HTML_Select extends HTML_Common
 {
@@ -53,20 +49,21 @@ class HTML_Select extends HTML_Common
     /**
      * Class constructor
      *
-     * @param     string    $name       (optional)Name attribute of the SELECT
-     * @param     int       $size       (optional) Size attribute of the SELECT
-     * @param     bool      $multiple   (optional)Whether the select will allow multiple 
-     *                                  selections or not
-     * @param     mixed     $attributes (optional)Either a typical HTML attribute string 
-     *                                  or an associative array
-     * @param     int       $tabOffset  (optional)Number of tabs to offset HTML source
-     * @since     1.0
-     * @access    public
-     * @return    void
-     * @throws    
+     * @param string  $name       Name attribute of the SELECT
+     * @param integer $size       Size attribute of the SELECT
+     * @param boolean $multiple   Whether the select will allow multiple 
+     *                            selections or not
+     * @param mixed   $attributes Either a typical HTML attribute string 
+     *                            or an associative array
+     * @param integer $tabOffset  Number of tabs to offset HTML source
+     *
+     * @since  1.0
+     * @access public
      */
-    function HTML_Select($name = '', $size = 1, $multiple = false, $attributes = null, $tabOffset = 0)
-    {
+    function HTML_Select(
+        $name = '', $size = 1, $multiple = false,
+        $attributes = null, $tabOffset = 0
+    ) {
         HTML_Common::HTML_Common($attributes, $tabOffset);
         $attr = array(
             'name' => $name,
@@ -98,10 +95,11 @@ class HTML_Select extends HTML_Common
     /**
      * Sets the default values of the select box
      *
-     * @param     mixed    $values  Array or comma delimited string of selected values
-     * @since     1.0
-     * @access    public
-     * @return    void
+     * @param mixed $values Array or comma delimited string of selected values
+     *
+     * @since  1.0
+     * @access public
+     * @return void
      */
     function setSelectedValues($values)
     {
@@ -129,15 +127,15 @@ class HTML_Select extends HTML_Common
     /**
      * Adds a new OPTION to the SELECT
      *
-     * @param     string    $text       Display text for the OPTION
-     * @param     string    $value      Value for the OPTION
-     * @param     bool      $selected   Whether the option is selected or not
-     * @param     mixed     $attributes Either a typical HTML attribute string 
-     *                                  or an associative array
-     * @since     1.0
-     * @access    public
-     * @return    void
-     * @throws    
+     * @param string  $text       Display text for the OPTION
+     * @param string  $value      Value for the OPTION
+     * @param boolean $selected   Whether the option is selected or not
+     * @param mixed   $attributes Either a typical HTML attribute string 
+     *                            or an associative array
+     *
+     * @since  1.0
+     * @access public
+     * @return void
      */
     function addOption($text, $value, $selected = false, $attributes = null)
     {
@@ -154,17 +152,20 @@ class HTML_Select extends HTML_Common
     /**
      * Loads the options from an associative array
      * 
-     * @param     array    $arr     Associative array of options
-     * @param     mixed    $values  (optional) Array or comma delimited string of selected values
-     * @since     1.0
-     * @access    public
-     * @return    PEAR_Error on error or true
-     * @throws    PEAR_Error
+     * @param array $arr    Associative array of options
+     * @param mixed $values Array or comma delimited string of selected values
+     *
+     * @since  1.0
+     * @access public
+     * @return PEAR_Error on error or true
+     * @throws PEAR_Error
      */
     function loadArray($arr, $values=null)
     {
         if (!is_array($arr)) {
-            return new PEAR_ERROR('First argument to HTML_Select::loadArray is not a valid array');
+            return new PEAR_ERROR(
+                'First argument to HTML_Select::loadArray is not a valid array'
+            );
         }
         if (isset($values)) {
             $this->setSelectedValues($values);
@@ -179,17 +180,20 @@ class HTML_Select extends HTML_Common
      * Loads the options from an array with numeric keys, using the
      * array values as the form values as well as labels.
      * 
-     * @param     array    $arr     Array of options
-     * @param     mixed    $values  (optional) Array or comma delimited string of selected values
-     * @since     1.2
-     * @access    public
-     * @return    PEAR_Error on error or true
-     * @throws    PEAR_Error
+     * @param array $arr    Array of options
+     * @param mixed $values Array or comma delimited string of selected values
+     *
+     * @since  1.2
+     * @access public
+     * @return PEAR_Error on error or true
+     * @throws PEAR_Error
      */
     function loadValueArray($arr, $values = null)
     {
         if (!is_array($arr)) {
-            return new PEAR_ERROR("First argument to HTML_Select::loadArray is not a valid array");
+            return new PEAR_ERROR(
+                "First argument to HTML_Select::loadArray is not a valid array"
+            );
         }
         if (isset($values)) {
             $this->setSelectedValues($values);
@@ -205,10 +209,12 @@ class HTML_Select extends HTML_Common
      * 
      * If no column names are specified the first two columns of the result are
      * used as the text and value columns respectively
-     * @param     object    $result     DB_result object 
-     * @param     string    $textCol    (optional) Name of column to display as the OPTION text 
-     * @param     string    $valueCol   (optional) Name of column to use as the OPTION value 
-     * @param     mixed     $values     (optional) Array or comma delimited string of selected values
+     *
+     * @param object &$result  DB_result object 
+     * @param string $textCol  Name of column to display as the OPTION text 
+     * @param string $valueCol Name of column to use as the OPTION value 
+     * @param mixed  $values   Array or comma delimited string of selected values
+     *
      * @since     1.0
      * @access    public
      * @return    PEAR_Error on error or true
@@ -218,14 +224,21 @@ class HTML_Select extends HTML_Common
     {
         include_once 'DB.php';
         
-        if (!is_object($result) || (strtolower(get_class($result)) != "db_result" && 
-            is_subclass_of($result, "db_result"))) {
-            return new PEAR_ERROR("First argument to HTML_Select::loadDbResult is not a valid DB_result");
+        if (!is_object($result)
+            || (strtolower(get_class($result)) != "db_result"
+            && is_subclass_of($result, "db_result"))
+        ) {
+            return new PEAR_Error(
+                'First argument to HTML_Select::loadDbResult'
+                . ' is not a valid DB_result'
+            );
         }
-         if (isset($values)) {
+        if (isset($values)) {
             $this->setSelectedValues($values);
         }
-        $fetchMode = ($textCol && $valueCol) ? DB_FETCHMODE_ASSOC : DB_FETCHMODE_DEFAULT;
+        $fetchMode = ($textCol && $valueCol)
+            ? DB_FETCHMODE_ASSOC
+            : DB_FETCHMODE_DEFAULT;
         while (is_array($row = $result->fetchRow($fetchMode)) ) {
             if ($fetchMode == DB_FETCHMODE_ASSOC) {
                 $this->addOption($row[$textCol], $row[$valueCol]);
@@ -239,15 +252,15 @@ class HTML_Select extends HTML_Common
     /**
      * Queries a database and loads the options from the results
      *
-     * @param     mixed     $conn       Either an existing DB connection or a valid dsn 
-     * @param     string    $sql        SQL query string
-     * @param     string    $textCol    (optional) Name of column to display as the OPTION text 
-     * @param     string    $valueCol   (optional) Name of column to use as the OPTION value 
-     * @param     mixed     $values     (optional) Array or comma delimited string of selected values
-     * @since     1.1
-     * @access    private
-     * @return    void
-     * @throws    
+     * @param mixed  &$conn    Either an existing DB connection or a valid dsn 
+     * @param string $sql      SQL query string
+     * @param string $textCol  Name of column to display as the OPTION text 
+     * @param string $valueCol Name of column to use as the OPTION value 
+     * @param mixed  $values   Array or comma delimited string of selected values
+     *
+     * @since  1.1
+     * @access private
+     * @return void
      */
     function loadQuery(&$conn, $sql, $textCol=null, $valueCol=null, $values=null)
     {
@@ -255,58 +268,69 @@ class HTML_Select extends HTML_Common
         
         if (is_string($conn)) {
             $dbConn = &DB::connect($conn, true);
-            if (DB::isError($dbConn)) return $dbConn;
+            if (DB::isError($dbConn)) {
+                return $dbConn;
+            }
         } elseif (is_subclass_of($conn, "db_common")) {
             $dbConn = $conn;
         } else {
-            return $this->raiseError("Argument 1 of HTML_Select::loadQuery is not a valid type");
+            return $this->raiseError(
+                "Argument 1 of HTML_Select::loadQuery is not a valid type"
+            );
         }
         $result = @$dbConn->query($sql);
-        if (DB::isError($result)) return $result;
+        if (DB::isError($result)) {
+            return $result;
+        }
         return $this->loadDbResult($result, $textCol, $valueCol, $values);
     }
 
     /**
      * Loads options from different types of data sources
      *
-     * This method is a simulated overloaded method.  The arguments, other than the
-     * first are optional and only mean something depending on the type of the first argument.
-     * If the first argument is an array then all arguments are passed in order to loadArray.
-     * If the first argument is a db_result then all arguments are passed in order to loadDbResult.
-     * If the first argument is a string or a DB connection then all arguments are 
-     * passed in order to loadQuery.
-     * @param     mixed     $options     Options source currently supports assoc array or DB_result
-     * @param     mixed     $param1     (optional) See function detail
-     * @param     mixed     $param2     (optional) See function detail
-     * @param     mixed     $param3     (optional) See function detail
-     * @param     mixed     $param4     (optional) See function detail
-     * @since     1.1
-     * @access    public
-     * @return    PEAR_Error on error or true
-     * @throws    PEAR_Error
+     * This method is a simulated overloaded method.
+     * The arguments, other than the first are optional and only mean
+     * something depending on the type of the first argument.
+     * If the first argument is an array then all arguments are passed
+     * in order to loadArray.
+     * If the first argument is a db_result then all arguments are
+     * passed in order to loadDbResult.
+     * If the first argument is a string or a DB connection then
+     * all arguments are passed in order to loadQuery.
+     *
+     * @param mixed &$options Options source currently supports assoc
+     *                        array or DB_result
+     * @param mixed $param1   See function detail
+     * @param mixed $param2   See function detail
+     * @param mixed $param3   See function detail
+     * @param mixed $param4   See function detail
+     *
+     * @since  1.1
+     * @access public
+     * @return PEAR_Error on error or true
+     * @throws PEAR_Error
      */
     function load(&$options, $param1=null, $param2=null, $param3=null, $param4=null)
     {
-        switch (true) {
-            case is_array($options):
-                return $this->loadArray($options, $param1);
-                break;
-            case (strtolower(get_class($options)) == "db_result" || is_subclass_of($options, "db_result")):
-                return $this->loadDbResult($options, $param1, $param2, $param3);
-                break;
-            case (is_string($options) || is_subclass_of($options, "db_common")):
-                return $this->loadQuery($options, $param1, $param2, $param3, $param4);
-                break;
+        if (is_array($options)) {
+            return $this->loadArray($options, $param1);
+        } else if (strtolower(get_class($options)) == "db_result"
+            || is_subclass_of($options, "db_result")
+        ) {
+            return $this->loadDbResult($options, $param1, $param2, $param3);
+        } else if (is_string($options)
+            || is_subclass_of($options, "db_common")
+        ) {
+            return $this->loadQuery($options, $param1, $param2, $param3, $param4);
         }
     }
     
     /**
      * Returns the SELECT in HTML
      *
-     * @since     1.0
-     * @access    public
-     * @return    string
-     * @throws    
+     * @since  1.0
+     * @access public
+     * @return string HTML code
      */
     function toHtml()
     {
