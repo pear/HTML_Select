@@ -2,6 +2,12 @@
 /**
  * Demo for HTML_Select
  */
+//you do *not* need the following line!
+set_include_path(
+    dirname(__FILE__) . '/../'
+    . PATH_SEPARATOR . get_include_path()
+);
+
 require_once 'HTML/Select.php';
 
 //key is used as label, value as <option value="">.
