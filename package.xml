@@ -29,8 +29,10 @@ HTML_Select provides an OOP way of generating HTML form select elements.
 Fix get_class compatability issue.
     </notes>
     <filelist>
-      <dir name="/" baseinstalldir="HTML">
-        <file role="php">Select.php</file>
+      <dir name="/">
+        <dir name="HTML">
+          <file role="php">Select.php</file>
+        </dir>
       </dir>
     </filelist>
     <deps>
