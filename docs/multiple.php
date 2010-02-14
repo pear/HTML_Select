@@ -8,7 +8,7 @@
  <body>
   <form method="get" action="#">
    <p>
-<label for="color">Select a color:</label>
+<label for="color">Select some colors:</label>
 <?php
 /**
  * Demo for HTML_Select with multiple attributes
