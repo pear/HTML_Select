@@ -34,7 +34,7 @@ $colors = array(
 $hs = new HTML_Select('color', 5, true);
 
 //preselected values are orange and red
-$hs->loadValueArray($colors, array('#FF8000', '#FF0000'));
+$hs->load($colors, array('#FF8000', '#FF0000'));
 
 echo $hs->toHtml();
 
