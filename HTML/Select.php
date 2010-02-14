@@ -191,7 +191,7 @@ class HTML_Select extends HTML_Common
     function loadValueArray($arr, $values = null)
     {
         if (!is_array($arr)) {
-            return new PEAR_ERROR(
+            return new PEAR_Error(
                 "First argument to HTML_Select::loadArray is not a valid array"
             );
         }
@@ -307,7 +307,8 @@ class HTML_Select extends HTML_Common
      *
      * @since  1.1
      * @access public
-     * @return PEAR_Error on error or true
+     * @return PEAR_Error on error or true, or false if no method to load
+     *         the data could be determined.
      * @throws PEAR_Error
      */
     function load(&$options, $param1=null, $param2=null, $param3=null, $param4=null)
@@ -323,6 +324,8 @@ class HTML_Select extends HTML_Common
         ) {
             return $this->loadQuery($options, $param1, $param2, $param3, $param4);
         }
+
+        return false;
     }
     
     /**
