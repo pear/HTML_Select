@@ -136,6 +136,9 @@ class HTML_Select extends HTML_Common
      * @since  1.0
      * @access public
      * @return void
+     *
+     * @see addStartOptionGroup()
+     * @see addStopOptionGroup()
      */
     function addOption($text, $value, $selected = false, $attributes = null)
     {
@@ -147,6 +150,45 @@ class HTML_Select extends HTML_Common
         $attr['value'] = $value;
         $this->_updateAttrArray($attributes, $attr);
         $this->_options[] = array('text' => $text, 'attr' => $attributes);
+    }
+
+    /**
+     * Starts an option group "<optgroup>"
+     *
+     * @param string $text       Label
+     * @param array  $attributes HTML attribute associative array
+     *
+     * @return void
+     * @access public
+     * @since  1.3.0
+     *
+     * @see addOptionGroup()
+     */
+    function addStartOptionGroup($text, $attributes = null)
+    {
+        if (!isset($attributes['label'])) {
+            $attributes['label'] = $text;
+        }
+        $this->_options[] = array(
+            'type' => 'optgroup',
+            'attr' => $attributes
+        );
+    }
+
+    /**
+     * Stops an option group "</optgroup>"
+     *
+     * @return void
+     * @access public
+     * @since  1.3.0
+     *
+     * @see addStartOptionGroup()
+     */
+    function addStopOptionGroup()
+    {
+        $this->_options[] = array(
+            'type' => '/optgroup',
+        );
     }
     
     /**
@@ -160,7 +202,7 @@ class HTML_Select extends HTML_Common
      * @return PEAR_Error on error or true
      * @throws PEAR_Error
      */
-    function loadArray($arr, $values=null)
+    function loadArray($arr, $values = null)
     {
         if (!is_array($arr)) {
             return new PEAR_ERROR(
@@ -170,8 +212,16 @@ class HTML_Select extends HTML_Common
         if (isset($values)) {
             $this->setSelectedValues($values);
         }
-        while (list($key, $value) = each($arr)) {
-            $this->addOption($key, $value);
+        foreach ($arr as $key => $value) {
+            if (is_array($value)) {
+                $this->addStartOptionGroup($key);
+                foreach ($value as $subkey => $subvalue) {
+                    $this->addOption($subkey, $subvalue);
+                }
+                $this->addStopOptionGroup();
+            } else {
+                $this->addOption($key, $value);
+            }
         }
         return true;
     }
@@ -198,8 +248,17 @@ class HTML_Select extends HTML_Common
         if (isset($values)) {
             $this->setSelectedValues($values);
         }
-        foreach ($arr as $value) {
-            $this->addOption($value, $value);
+
+        foreach ($arr as $key => $value) {
+            if (is_array($value)) {
+                $this->addStartOptionGroup($key);
+                foreach ($value as $subvalue) {
+                    $this->addOption($subvalue, $subvalue);
+                }
+                $this->addStopOptionGroup();
+            } else {
+                $this->addOption($value, $value);
+            }
         }
         return true;
     }
@@ -346,6 +405,16 @@ class HTML_Select extends HTML_Common
         $strHtml .=
             '<select' . $this->_getAttrString($this->_attributes) . '>';
         foreach ($this->_options as $option) {
+            if (isset($option['type'])) {
+                if ($option['type'] == 'optgroup') {
+                    $strHtml .= '<optgroup'
+                        . $this->_getAttrString($option['attr'])
+                        . '>';
+                } else {
+                    $strHtml .= '</optgroup>';
+                }
+                continue;
+            }
             if (@in_array($option['attr']['value'], $this->_values)) {
                 $option['attr']['selected'] = 'selected';
             }
