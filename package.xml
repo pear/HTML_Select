@@ -1,52 +1,96 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
-  <name>HTML_Select</name>
-  <summary>HTML_Select is a class for generating HTML form select elements.</summary>
-  <description>
-HTML_Select provides an OOP way of generating HTML form select elements.
-  </description>
-  <license>PHP License</license>
-  <maintainers>
-    <maintainer>
-      <user>thesaur</user>
-      <name>Klaus Guenther</name>
-      <email>klaus@capitalfocus.org</email>
-      <role>lead</role>
-    </maintainer>
-    <maintainer>
-      <user>adaniel</user>
-      <name>Adam Daniel</name>
-      <email>adaniel1@eesus.jnj.com</email>
-      <role>lead</role>
-    </maintainer>
-  </maintainers>
-  <release>
-    <version>1.2.1</version>
-    <date>2004-02-26</date>
-    <state>beta</state>
-    <notes>
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+ <name>HTML_Select</name>
+ <channel>pear.php.net</channel>
+ <summary>HTML_Select is a class for generating HTML form select elements.</summary>
+ <description>HTML_Select provides an OOP way of generating HTML form select elements.
+  
+ </description>
+ <lead>
+  <name>Klaus Guenther</name>
+  <user>thesaur</user>
+  <email>klaus@capitalfocus.org</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Adam Daniel</name>
+  <user>adaniel</user>
+  <email>adaniel1@eesus.jnj.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2004-02-26</date>
+ <version>
+  <release>1.2.1</release>
+  <api>1.2.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
 Fix get_class compatability issue.
-    </notes>
-    <filelist>
-      <dir name="/">
-        <dir name="HTML">
-          <file role="php">Select.php</file>
-        </dir>
-      </dir>
-    </filelist>
-    <deps>
-      <dep type="pkg" rel="ge" version="1.1">HTML_Common</dep>
-    </deps>
+ </notes>
+
+ <contents>
+  <dir name="/">
+   <dir name="HTML">
+    <file name="Select.php" role="php" />
+   </dir>
+  </dir>
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <package>
+    <name>HTML_Common</name>
+    <channel>pear.php.net</channel>
+    <min>1.1</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+
+  <release>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-02-26</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fix get_class compatability issue.
+   </notes>
   </release>
-  <changelog>
-    <release>
-      <version>1.2</version>
-      <date>2003-07-03</date>
-      <state>beta</state>
-      <notes>
+
+  <release>
+   <version>
+    <release>1.2</release>
+    <api>1.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2003-07-03</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
 First independent pear release.
-      </notes>
-    </release>
-  </changelog>
+   </notes>
+  </release>
+ </changelog>
 </package>
