@@ -27,7 +27,7 @@ require_once 'HTML/Common.php';
  */
 class HTML_Select extends HTML_Common
 {
-    
+
     /**
      * Contains the select options
      *
@@ -36,10 +36,10 @@ class HTML_Select extends HTML_Common
      * @access    private
      */
     var $_options = array();
-    
+
     /**
      * Default values of the SELECT
-     * 
+     *
      * @var       string
      * @since     1.0
      * @access    private
@@ -51,9 +51,9 @@ class HTML_Select extends HTML_Common
      *
      * @param string  $name       Name attribute of the SELECT
      * @param integer $size       Size attribute of the SELECT
-     * @param boolean $multiple   Whether the select will allow multiple 
+     * @param boolean $multiple   Whether the select will allow multiple
      *                            selections or not
-     * @param mixed   $attributes Either a typical HTML attribute string 
+     * @param mixed   $attributes Either a typical HTML attribute string
      *                            or an associative array
      * @param integer $tabOffset  Number of tabs to offset HTML source
      *
@@ -79,10 +79,10 @@ class HTML_Select extends HTML_Common
         $this->updateAttributes($attr);
         $this->setSelectedValues(array());
     }
-    
+
     /**
-     * Returns the current API version 
-     * 
+     * Returns the current API version
+     *
      * @since     1.0
      * @access    public
      * @return    double
@@ -104,7 +104,7 @@ class HTML_Select extends HTML_Common
     function setSelectedValues($values)
     {
         if (is_string($values)) {
-            $values = split("[ ]?,[ ]?", $values);
+            $values = preg_split("/[ ]?,[ ]?/", $values);
         }
         if (!is_array($values)) {
             $values = array($values);
@@ -130,7 +130,7 @@ class HTML_Select extends HTML_Common
      * @param string  $text       Display text for the OPTION
      * @param string  $value      Value for the OPTION
      * @param boolean $selected   Whether the option is selected or not
-     * @param mixed   $attributes Either a typical HTML attribute string 
+     * @param mixed   $attributes Either a typical HTML attribute string
      *                            or an associative array
      *
      * @since  1.0
@@ -145,7 +145,7 @@ class HTML_Select extends HTML_Common
         if ($selected && !in_array($value, $this->_values)) {
             $this->_values[] = $value;
         }
-        
+
         $attributes = $this->_parseAttributes($attributes);
         $attr['value'] = $value;
         $this->_updateAttrArray($attributes, $attr);
@@ -190,10 +190,10 @@ class HTML_Select extends HTML_Common
             'type' => '/optgroup',
         );
     }
-    
+
     /**
      * Loads the options from an associative array
-     * 
+     *
      * @param array $arr    Associative array of options
      * @param mixed $values Array or comma delimited string of selected values
      *
@@ -225,11 +225,11 @@ class HTML_Select extends HTML_Common
         }
         return true;
     }
-    
+
     /**
      * Loads the options from an array with numeric keys, using the
      * array values as the form values as well as labels.
-     * 
+     *
      * @param array $arr    Array of options
      * @param mixed $values Array or comma delimited string of selected values
      *
@@ -262,16 +262,16 @@ class HTML_Select extends HTML_Common
         }
         return true;
     }
-    
+
     /**
      * Loads the options from DB_result object
-     * 
+     *
      * If no column names are specified the first two columns of the result are
      * used as the text and value columns respectively
      *
-     * @param object &$result  DB_result object 
-     * @param string $textCol  Name of column to display as the OPTION text 
-     * @param string $valueCol Name of column to use as the OPTION value 
+     * @param object &$result  DB_result object
+     * @param string $textCol  Name of column to display as the OPTION text
+     * @param string $valueCol Name of column to use as the OPTION value
      * @param mixed  $values   Array or comma delimited string of selected values
      *
      * @since     1.0
@@ -282,7 +282,7 @@ class HTML_Select extends HTML_Common
     function loadDbResult(&$result, $textCol=null, $valueCol=null, $values=null)
     {
         include_once 'DB.php';
-        
+
         if (!is_object($result)
             || (strtolower(get_class($result)) != "db_result"
             && is_subclass_of($result, "db_result"))
@@ -307,14 +307,14 @@ class HTML_Select extends HTML_Common
         }
         return true;
     }
-    
+
     /**
      * Queries a database and loads the options from the results
      *
-     * @param mixed  &$conn    Either an existing DB connection or a valid dsn 
+     * @param mixed  &$conn    Either an existing DB connection or a valid dsn
      * @param string $sql      SQL query string
-     * @param string $textCol  Name of column to display as the OPTION text 
-     * @param string $valueCol Name of column to use as the OPTION value 
+     * @param string $textCol  Name of column to display as the OPTION text
+     * @param string $valueCol Name of column to use as the OPTION value
      * @param mixed  $values   Array or comma delimited string of selected values
      *
      * @since  1.1
@@ -324,7 +324,7 @@ class HTML_Select extends HTML_Common
     function loadQuery(&$conn, $sql, $textCol=null, $valueCol=null, $values=null)
     {
         include_once 'DB.php';
-        
+
         if (is_string($conn)) {
             $dbConn = &DB::connect($conn, true);
             if (DB::isError($dbConn)) {
@@ -386,7 +386,7 @@ class HTML_Select extends HTML_Common
 
         return false;
     }
-    
+
     /**
      * Returns the SELECT in HTML
      *
@@ -426,6 +426,6 @@ class HTML_Select extends HTML_Common
         $strHtml .= '</select>';
         return $strHtml;
     }
-    
+
 }
 ?>
